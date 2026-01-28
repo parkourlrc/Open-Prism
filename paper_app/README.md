@@ -1,4 +1,4 @@
-# OceanS Paper Generator
+# Open-Prism
 
 [English](README_EN.md)
 

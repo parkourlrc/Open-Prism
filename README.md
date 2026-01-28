@@ -1,4 +1,4 @@
-# OceanS Paper Generator
+# Open-Prism
 
 [English](README_EN.md)
 
@@ -49,10 +49,14 @@
 ### 从源码运行（更快但需要准备依赖）
 
 1. 安装 Python（建议 3.11）并创建虚拟环境
-2. 安装项目依赖（本仓库未提供 pin 版 `requirements.txt`，建议在你的打包环境中 `pip freeze > requirements.txt` 后复用，或按报错逐个安装缺失依赖）
+2. 安装项目依赖：`pip install -r requirements.txt`
 3. 运行：`python ocean_paper_desktop.py`
 
 注意：如果你希望“生成 docx/渲染图”功能正常工作，需要确保 Pandoc、Node+Mermaid CLI、Graphviz 等工具链可用（exe 版本已内置；源码运行需要你自行安装或准备对应资源路径）。
+
+可选：如果你要用到 beswarm 的屏幕/鼠标自动化相关工具（本应用默认不依赖），再安装：
+
+- `pip install playwright pyautogui`
 
 ## 输出目录
 

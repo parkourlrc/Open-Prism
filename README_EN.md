@@ -1,4 +1,4 @@
-# OceanS Paper Generator
+# Open-Prism
 
 [中文](README.md)
 
@@ -49,10 +49,14 @@ Note: `dist/OceanS_Paper.exe` is built in onefile mode. It usually starts slower
 ### Run from source (faster, but requires dependencies)
 
 1. Install Python (recommended 3.11) and create a virtual environment
-2. Install dependencies (this repo does not ship a pinned `requirements.txt`; reuse your packaging environment via `pip freeze > requirements.txt`, or install missing packages based on runtime errors)
+2. Install dependencies: `pip install -r requirements.txt`
 3. Run: `python ocean_paper_desktop.py`
 
 Note: to keep “Docx export / diagram rendering” working, you need Pandoc, Node+Mermaid CLI, Graphviz, etc. (bundled in the exe; for source runs you must install/provide them yourself or adjust resource paths).
+
+Optional: if you want to use beswarm’s GUI automation/screen tools (not required by default), install:
+
+- `pip install playwright pyautogui`
 
 ## Output directory
 
