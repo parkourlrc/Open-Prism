@@ -16,6 +16,9 @@
   - 英文 CS：`prompts/paper/英文CS论文_paper_generation_prompt.md`
   - 中文 CS：`prompts/paper/中文CS论文_paper_generation_prompt.md`
   - 非 CS：`prompts/paper/非CS论文_paper_generation_prompt.md`
+- 自动检索/引用（可选）：根据需要自动检索 arXiv/网页内容，并把来源信息写入输出文件（是否启用取决于你是否配置“网页抓取 Key（ThorData）”或开启“搜索模式”）
+- 自动实验/自动验证（可选）：在环境允许时，智能体可能会自动生成/修改实验代码与命令、执行并收集结果，再写入输出目录；若你的机器缺少依赖或权限受限，实验步骤可能会被跳过或失败（建议优先使用可复现的本地脚本/数据集）
+- 自动润色与排版：会对论文内容进行多轮改写、结构优化与语言润色；并在可用工具链齐全时生成 Docx、渲染 Mermaid/Graphviz 图
 - API 设置（在“设置”页保存）：
   - `API_KEY`：模型服务 Key
   - `BASE_URL`：默认 `https://0-0.pro/v1`
@@ -26,6 +29,30 @@
   - `_logs/run.log`：运行日志（用于 UI 实时显示）
   - `_logs/agent.log`：智能体内部日志
   - `_logs/conversation.json`：对话历史（已做敏感信息脱敏）
+
+## 如何使用（推荐先用 exe 快速测试）
+
+### 使用 exe 快速测试（更慢但最省事）
+
+说明：`dist/OceanS_Paper.exe` 是 onefile 打包版本，启动时需要解压/加载运行时，因此通常会比直接运行源码更慢。
+
+1. 获取 `dist/OceanS_Paper.exe`（如果你是从 GitHub clone，需要先 `git lfs install` 才能拉到完整 exe）
+2. 双击运行 `dist/OceanS_Paper.exe`
+3. 打开“设置”页，填写 `API_KEY` / `BASE_URL` / `MODEL`
+   - 如需联网搜索/网页抓取：填写“网页抓取 Key（ThorData）”
+   - 如不想填写网页抓取 Key：可开启“搜索模式”（会使用 `BASE_URL` 同域的 `/v1/search?q=...` 并用你的 `API_KEY` 授权）
+4. 回到“生成论文”页，输入主题，选择类型，点击开始
+5. 在输出目录查看结果：`%USERPROFILE%\\Documents\\OceanS_Paper_Output\\<run_id>\\`
+   - 运行过程：看 `_logs/run.log`
+   - 最终论文：通常为 `paper_final.docx`
+
+### 从源码运行（更快但需要准备依赖）
+
+1. 安装 Python（建议 3.11）并创建虚拟环境
+2. 安装项目依赖（本仓库未提供 pin 版 `requirements.txt`，建议在你的打包环境中 `pip freeze > requirements.txt` 后复用，或按报错逐个安装缺失依赖）
+3. 运行：`python ocean_paper_desktop.py`
+
+注意：如果你希望“生成 docx/渲染图”功能正常工作，需要确保 Pandoc、Node+Mermaid CLI、Graphviz 等工具链可用（exe 版本已内置；源码运行需要你自行安装或准备对应资源路径）。
 
 ## 输出目录
 
